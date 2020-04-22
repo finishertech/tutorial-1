@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -eou pipefail
+get=`which curl` || {
+  get=`which wget` || {
+    echo "Fail! Please, install curl or wget!"
+    exit 1
+  }
+}
+vagrant=${vagrant:-false}
+check_overwrite=${check_overwrite:-false}
+repo=finishertech/tutorial-1; branch=gh-pages
+user=${repo%/*}; project=${repo#*/}
+github_projects=~/Projects/github.com
+repo_tar=https://github.com/$repo/archive/$branch.tar.gz
+$vagrant && {
+  echo "Vagrant installation mode on ..."
+  vagrant_tmp=/vagrant/tmp
+  tmp=${vagrant_tmp##*/}
+  [ -d $tmp ] || { echo "Directory \"$PWD/$tmp\" does not exists!"; exit 1; }
+  user_github_dir=$tmp
+} || user_github_dir=$github_projects/$user
+echo -e "Downloading $repo_tar.\nIt will be extracted in $user_github_dir/$project ..."
+$check_overwrite && {
+  ! [ -d "$user_github_dir/$project" ] || {
+    echo "Fail! Output directory already exists!"
+    exit 1
+  }
+} || rm -rf "$user_github_dir/$project"
+mkdir -p $user_github_dir
+case "$get" in
+  *curl) $get -L $repo_tar ;;
+  *) $get -O- $repo_tar ;;
+esac | tar -xz -C $user_github_dir
+mv $user_github_dir/$project-$branch $user_github_dir/$project
+$vagrant && f=$vagrant_tmp/$project || f=$user_github_dir/$project
+f=$f/install
+! $vagrant && source "$f" || {
+  vagrant ssh -c "bash $f" || { echo "Failed to install $f"; exit 1; }
+}
+echo -e "Installation completed!\nPlease, close this window and open another!"

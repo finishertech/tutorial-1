@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="author" content="Paulo Jerônimo">
+<title>Construindo um website em React</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto; border-top: 1px solid #ddddd8;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="para-o-código-gerado-com-este-tutorial" class="book toc2 toc-left">
+<div id="header">
+<h1>Construindo um website em React</h1>
+<div class="details">
+<span id="author" class="author">Paulo Jerônimo</span><br>
+<span id="email" class="email"><a href="mailto:paulojeronimo@gmail.com">paulojeronimo@gmail.com</a></span><br>
+<span id="revdate">2020-04-22 18:24:14 -03</span>
+<br><span id="revremark">Faixa Branca</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Conteúdo</div>
+<p><span class="toc-root"><a href="index.html">Construindo um website em React</a></span></p><ul class="sectlevel0">
+<li><a href="introducao.html">Neste tutorial, você &#8230;&#8203;</a>
+</li>
+<li><a href="licenca-de-uso.html">Licença de uso</a>
+<ul class="sectlevel1">
+<li><a href="para-este-tutorial.html">Para este tutorial</a>
+</li>
+<li><a href="para-o-código-gerado-com-este-tutorial.html"><span class="toc-current">Para o código gerado com este tutorial</span></a>
+</li>
+</ul>
+</li>
+<li><a href="preparando-o-ambiente.html">Preparando o ambiente</a>
+</li>
+<li><a href="entendendo-o-que-vamos-criar.html">Entendendo o que vamos criar</a>
+</li>
+<li><a href="criando-o-projeto-inicial.html">Criando o projeto inicial</a>
+</li>
+<li><a href="testando-o-projeto.html">Testando o projeto</a>
+</li>
+<li><a href="testando-o-hot-reload.html">Fazendo uma mudança simples para testar o hot reload do projeto</a>
+</li>
+<li><a href="codando-o-componente-hello.html">Codando o componente "Hello Finisher.Tech!"</a>
+</li>
+<li><a href="adicionando-o-react-bootstrap.html">Adicionando o Bootstrap e o React Bootstrap ao projeto</a>
+</li>
+<li><a href="codando-o-componente-menu.html">Codando o componente Menu</a>
+</li>
+<li><a href="codando-o-componente-header.html">Codando o componente Header</a>
+</li>
+<li><a href="codando-o-componente-events-title.html">Codando o componente Events (title)</a>
+</li>
+<li><a href="codando-o-componente-events-body.html">Codando o componente Events (body)</a>
+</li>
+<li><a href="fixando-a-posicao-do-menu.html">Fixando a posição do Menu</a>
+</li>
+<li><a href="removendo-codigo-nao-utilizado.html">Removendo código não utilizado em App.js</a>
+</li>
+<li><a href="adicionando-o-sobre.html">Adicionando o Sobre</a>
+</li>
+<li><a href="conclusao.html">Conclusão</a>
+</li>
+<li><a href="decisoes.html">Decisões</a>
+</li>
+<li><a href="referencias.html">Referências</a>
+</li>
+<li><a href="manias.html">Manias</a>
+</li>
+<li><a href="proximos-tutoriais.html">Próximos tutoriais</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="para-o-código-gerado-com-este-tutorial">Para o código gerado com este tutorial</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Com relação ao código que você produzir seguindo o
+passo a passo apresentado aqui, você tem a minha
+permissão para partilhá-lo, sob a <a href="http://escolhaumalicenca.com.br/licencas/mit/" target="_blank" rel="noopener">Licença MIT</a>, em
+qualquer gerenciador de repositórios Git de sua
+preferência (<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>, <a href="https://gitlab.com/" target="_blank" rel="noopener">GitLab</a>, <a href="https://bitbucket.com/" target="_blank" rel="noopener">Bitbucket</a>,
+etc).
+E, se você fizer isso, eu adoraria <span class="icon"><i class="fa fa-heart"></i></span>
+ser notificado pois, dessa forma, eu verei
+que meu trabalho está realmente lhe sendo útil!</p>
+</div>
+<div class="paragraph">
+<p>Ah! De antemão, agradeço por você clicar na
+estrelinha
+⭐️
+do <a href="https://j.mp/FTTut1" target="_blank" rel="noopener">repositório deste tutorial no
+GitHub</a>, ok?
+😃</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Anterior: <a href="para-este-tutorial.html">Para este tutorial</a> | ↑ Acima: <a href="licenca-de-uso.html">Licença de uso</a> | ⌂ Início: <a href="index.html">Construindo um website em React</a> | Próximo: <a href="preparando-o-ambiente.html">Preparando o ambiente</a> →</p>
+</div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics
+-->
+<script async
+src="https://www.googletagmanager.com/gtag/js?id=UA-3106073-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3106073-3');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
+</body>
+</html>

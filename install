@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+export PROJECTS_DIR=~/Projects
+export PROJECT=finishertech-website
+export PROJECT_DIR=$PROJECTS_DIR/$PROJECT
+TUT_DIR=${TUT_DIR:-`cd "$(dirname "${BASH_SOURCE[0]}")"; pwd`}
+export PATH="$TUT_DIR/scripts:$PATH"
+
+cmd="source $TUT_DIR/install"
+if ! grep -q "^$cmd$" ~/.bashrc
+then
+  echo "$cmd" >> ~/.bashrc
+  echo "PROJECT_DIR=$PROJECT_DIR"
+  echo "TUT_DIR=$TUT_DIR"
+fi
+
+###############################
+# Command line helper functions
+###############################
+
+# tag::git-history[]
+git-history() { git log --oneline | cut -d' ' -f 2-; }
+# end::git-history[]
+
+# tag::git-apply[]
+git-apply() {
+  git apply $TUT_DIR/patch/$1
+  [ "$HIDE_DIFFTOOL" ] || git difftool
+  while shift
+  do
+    [ ! "$1" ] || git add "$1"
+  done
+}
+# end::git-apply[]
+
+# tag::git-add[]
+git-add() {
+  git add "$@"
+  git status
+}
+# end::git-add[]
+
+# tag::tut-add[]
+tut-add() {
+  local file=$1
+  local dir=`dirname $file`
+  mkdir -p $dir
+  cp $TUT_DIR/initial/$file $dir/
+  git add $file
+}
+# end::tut-add[]

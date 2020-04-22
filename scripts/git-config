@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+confirm() {
+  local prompt
+  while true; do
+    case "$1" in
+      name) prompt="Seu nome: ";;
+      email) prompt="Seu email: ";;
+      *) return 1
+    esac
+    read -p "$prompt"
+    while true; do
+      read -p "Confirma \"$REPLY\" (S/n)? " sn
+      case "$sn" in
+        [Ss]*|"")
+          git config --global user.$1 "$REPLY"
+          return $?
+          ;;
+        [Nn]*) break;;
+        *) echo "Por favor, responda Sim ou Não."
+      esac
+    done
+  done
+}
+
+confirm name
+confirm email
+echo "O git foi configurado:"
+grep -E 'name|email' ~/.gitconfig

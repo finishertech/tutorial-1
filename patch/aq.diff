@@ -1,0 +1,11 @@
+diff --git a/src/index.css b/src/index.css
+index ec2585e..34f1e05 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -1,5 +1,6 @@
+ body {
+   margin: 0;
++  padding-top: 3.5rem;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+     sans-serif;

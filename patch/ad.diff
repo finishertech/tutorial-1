@@ -1,0 +1,32 @@
+diff --git a/src/App.js b/src/App.js
+index ce9cbd2..f2d4206 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,26 +1,6 @@
+ import React from 'react';
+-import logo from './logo.svg';
+ import './App.css';
+ 
+-function App() {
+-  return (
+-    <div className="App">
+-      <header className="App-header">
+-        <img src={logo} className="App-logo" alt="logo" />
+-        <p>
+-          Edit <code>src/App.js</code> and save to reload.
+-        </p>
+-        <a
+-          className="App-link"
+-          href="https://reactjs.org"
+-          target="_blank"
+-          rel="noopener noreferrer"
+-        >
+-          Aprendendo React
+-        </a>
+-      </header>
+-    </div>
+-  );
+-}
++const App = _ => <>Hello Finisher.Tech!</>
+ 
+ export default App;

@@ -1,0 +1,11 @@
+diff --git a/src/App.js b/src/App.js
+index 23045cf..a323f83 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,5 +1,5 @@
+ import React from 'react'
+-import './App.css'
++
+ import Menu from './Menu'
+ import Header from './Header'
+ import Main from './Main'

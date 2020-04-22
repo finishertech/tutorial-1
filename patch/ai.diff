@@ -1,0 +1,27 @@
+diff --git a/src/Header.js b/src/Header.js
+index 6a7fa99..0068438 100644
+--- a/src/Header.js
++++ b/src/Header.js
+@@ -1,13 +1,18 @@
+ import React from 'react'
+ import { Container, Row, Col } from 'react-bootstrap'
++import './Header.css'
+ 
+ const Header = _ =>
+-  <header>
++  <header className="masthead">
+     <Container>
+-      <Row>
++      <Row className="text-center">
+         <Col>
+-          <h1>Inteligência Artificial e Blockchain</h1>
+-          <h2>Aplicadas a Bem Estar, Saúde e Esportes</h2>
++          <h1 className="text-white text-uppercase font-weight-bold">
++            Inteligência Artificial e Blockchain
++          </h1>
++          <h2 className="text-white">
++            Aplicadas a Bem Estar, Saúde e Esportes
++          </h2>
+         </Col>
+       </Row>
+     </Container>

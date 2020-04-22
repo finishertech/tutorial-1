@@ -1,0 +1,40 @@
+diff --git a/src/Main.js b/src/Main.js
+index d8c20bf..82d686a 100644
+--- a/src/Main.js
++++ b/src/Main.js
+@@ -1,5 +1,6 @@
+ import React from 'react'
+ import { Container, Row, Col } from 'react-bootstrap'
++import './Main.css'
+ import events from './events'
+ 
+ const Main = _ =>
+@@ -9,15 +10,19 @@ const Main = _ =>
+         <Container id={event.id} key={event.key}>
+           <Row>
+             <Col>
+-              <h2>
+-                {event.title}<br/>
+-                <a  href={event.link}
+-                    target="_blank"
+-                    rel="noopener noreferrer">
+-                  {event.subtitle}
+-                </a>
+-              </h2>
+-              <div>{event.body}</div>
++              <div className="container-title">
++                <h2>
++                  {event.title}<br/>
++                  (<a  href={event.link}
++                      target="_blank"
++                      rel="noopener noreferrer">
++                    {event.subtitle}
++                  </a>)
++                </h2>
++              </div>
++              <div className="container-body">
++                {event.body}
++              </div>
+             </Col>
+           </Row>
+         </Container>

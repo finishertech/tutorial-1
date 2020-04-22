@@ -1,0 +1,16 @@
+diff --git a/src/Main.js b/src/Main.js
+index 82d686a..e1e82ad 100644
+--- a/src/Main.js
++++ b/src/Main.js
+@@ -20,8 +20,9 @@ const Main = _ =>
+                   </a>)
+                 </h2>
+               </div>
+-              <div className="container-body">
+-                {event.body}
++              <div
++                className="container-body"
++                dangerouslySetInnerHTML={{__html: event.body}}>
+               </div>
+             </Col>
+           </Row>

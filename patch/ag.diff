@@ -1,0 +1,20 @@
+diff --git a/src/Menu.js b/src/Menu.js
+index 27e7661..fc0c062 100644
+--- a/src/Menu.js
++++ b/src/Menu.js
+@@ -1,5 +1,6 @@
+ import React from 'react'
+ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
++import Emoji from './Emoji'
+ 
+ const Menu = _ =>
+   <Navbar bg="dark" variant="dark" expand="md">
+@@ -8,7 +9,7 @@ const Menu = _ =>
+     <Navbar.Collapse id="basic-navbar-nav">
+       <Nav className="mr-auto">
+         <NavDropdown title="Eventos" id="basic-nav-dropdown">
+-          <NavDropdown.Item href="#evento-20192611">Corridas de rua premiadas com criptomoedas? Uau! 😃</NavDropdown.Item>
++          <NavDropdown.Item href="#evento-20192611">Corridas de rua premiadas com criptomoedas? Uau! <Emoji symbol="😃"/></NavDropdown.Item>
+           <NavDropdown.Item href="#evento-20191010">Inteligência Artificial e Blockchain aplicadas a Bem Estar, Saúde e Esportes</NavDropdown.Item>
+         </NavDropdown>
+         <Nav.Link href="#sobre">Sobre</Nav.Link>

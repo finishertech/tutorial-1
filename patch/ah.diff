@@ -1,0 +1,17 @@
+diff --git a/src/App.js b/src/App.js
+index 45f36fa..30f7427 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,10 +1,12 @@
+ import React from 'react'
+ import './App.css'
+ import Menu from './Menu'
++import Header from './Header'
+ 
+ const App = _ =>
+   <>
+     <Menu/>
++    <Header/>
+   </>
+ 
+ export default App

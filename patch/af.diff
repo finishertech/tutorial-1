@@ -1,0 +1,19 @@
+diff --git a/src/App.js b/src/App.js
+index f2d4206..45f36fa 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,6 +1,10 @@
+-import React from 'react';
+-import './App.css';
++import React from 'react'
++import './App.css'
++import Menu from './Menu'
+ 
+-const App = _ => <>Hello Finisher.Tech!</>
++const App = _ =>
++  <>
++    <Menu/>
++  </>
+ 
+-export default App;
++export default App

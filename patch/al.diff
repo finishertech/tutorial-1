@@ -1,0 +1,28 @@
+diff --git a/src/Menu.js b/src/Menu.js
+index fc0c062..727eac2 100644
+--- a/src/Menu.js
++++ b/src/Menu.js
+@@ -1,6 +1,6 @@
+ import React from 'react'
+ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+-import Emoji from './Emoji'
++import events from './events'
+ 
+ const Menu = _ =>
+   <Navbar bg="dark" variant="dark" expand="md">
+@@ -9,8 +9,13 @@ const Menu = _ =>
+     <Navbar.Collapse id="basic-navbar-nav">
+       <Nav className="mr-auto">
+         <NavDropdown title="Eventos" id="basic-nav-dropdown">
+-          <NavDropdown.Item href="#evento-20192611">Corridas de rua premiadas com criptomoedas? Uau! <Emoji symbol="😃"/></NavDropdown.Item>
+-          <NavDropdown.Item href="#evento-20191010">Inteligência Artificial e Blockchain aplicadas a Bem Estar, Saúde e Esportes</NavDropdown.Item>
++          {
++            events.map((event) =>
++              <NavDropdown.Item key={event.id} href={'#' + event.id}>
++                {event.title}
++              </NavDropdown.Item>
++            )
++          }
+         </NavDropdown>
+         <Nav.Link href="#sobre">Sobre</Nav.Link>
+       </Nav>

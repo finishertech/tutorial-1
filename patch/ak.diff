@@ -1,0 +1,24 @@
+diff --git a/src/Main.js b/src/Main.js
+index a4f7813..d8c20bf 100644
+--- a/src/Main.js
++++ b/src/Main.js
+@@ -6,10 +6,17 @@ const Main = _ =>
+   <main role="main">
+     {
+       events.map((event) =>
+-        <Container>
++        <Container id={event.id} key={event.key}>
+           <Row>
+             <Col>
+-              <h2>{event.title}<br/>{event.subtitle}</h2>
++              <h2>
++                {event.title}<br/>
++                <a  href={event.link}
++                    target="_blank"
++                    rel="noopener noreferrer">
++                  {event.subtitle}
++                </a>
++              </h2>
+               <div>{event.body}</div>
+             </Col>
+           </Row>

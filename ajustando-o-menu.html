@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="author" content="Paulo Jerônimo">
+<title>Construindo um website em React</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto; border-top: 1px solid #ddddd8;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="ajustando-o-menu" class="book toc2 toc-left">
+<div id="header">
+<h1>Construindo um website em React</h1>
+<div class="details">
+<span id="author" class="author">Paulo Jerônimo</span><br>
+<span id="email" class="email"><a href="mailto:paulojeronimo@gmail.com">paulojeronimo@gmail.com</a></span><br>
+<span id="revdate">2020-04-22 18:24:14 -03</span>
+<br><span id="revremark">Faixa Branca</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Conteúdo</div>
+<p><span class="toc-root"><a href="index.html">Construindo um website em React</a></span></p><ul class="sectlevel0">
+<li><a href="introducao.html">Neste tutorial, você &#8230;&#8203;</a>
+</li>
+<li><a href="licenca-de-uso.html">Licença de uso</a>
+</li>
+<li><a href="preparando-o-ambiente.html">Preparando o ambiente</a>
+</li>
+<li><a href="entendendo-o-que-vamos-criar.html">Entendendo o que vamos criar</a>
+</li>
+<li><a href="criando-o-projeto-inicial.html">Criando o projeto inicial</a>
+</li>
+<li><a href="testando-o-projeto.html">Testando o projeto</a>
+</li>
+<li><a href="testando-o-hot-reload.html">Fazendo uma mudança simples para testar o hot reload do projeto</a>
+</li>
+<li><a href="codando-o-componente-hello.html">Codando o componente "Hello Finisher.Tech!"</a>
+</li>
+<li><a href="adicionando-o-react-bootstrap.html">Adicionando o Bootstrap e o React Bootstrap ao projeto</a>
+</li>
+<li><a href="codando-o-componente-menu.html">Codando o componente Menu</a>
+</li>
+<li><a href="codando-o-componente-header.html">Codando o componente Header</a>
+</li>
+<li><a href="codando-o-componente-events-title.html">Codando o componente Events (title)</a>
+<ul class="sectlevel1">
+<li><a href="escrevendo-um-json-de-eventos.html">28. Escrevendo um JSON de eventos</a>
+</li>
+<li><a href="validando-e-filtrando-o-json-escrito.html">29. Validando e Filtrando o JSON escrito</a>
+</li>
+<li><a href="escrevendo-o-componente.html">30. Escrevendo o componente</a>
+</li>
+<li><a href="adicionando-o-componente-em-app-js-2.html">31. Adicionando o componente em App.js</a>
+</li>
+<li><a href="adicionando-os-atributos-id-e-key.html">32. Adicionando os atributos id e key</a>
+</li>
+<li><a href="ajustando-o-menu.html"><span class="toc-current">33. Ajustando o Menu</span></a>
+</li>
+<li><a href="aplicando-css-ao-main.html">34. Aplicando CSS ao Main</a>
+</li>
+<li><a href="comitando-5.html">35. Comitando</a>
+</li>
+</ul>
+</li>
+<li><a href="codando-o-componente-events-body.html">Codando o componente Events (body)</a>
+</li>
+<li><a href="fixando-a-posicao-do-menu.html">Fixando a posição do Menu</a>
+</li>
+<li><a href="removendo-codigo-nao-utilizado.html">Removendo código não utilizado em App.js</a>
+</li>
+<li><a href="adicionando-o-sobre.html">Adicionando o Sobre</a>
+</li>
+<li><a href="conclusao.html">Conclusão</a>
+</li>
+<li><a href="decisoes.html">Decisões</a>
+</li>
+<li><a href="referencias.html">Referências</a>
+</li>
+<li><a href="manias.html">Manias</a>
+</li>
+<li><a href="proximos-tutoriais.html">Próximos tutoriais</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ajustando-o-menu">33. Ajustando o Menu</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><a href="patch/al.diff" class="bare">patch/al.diff</a>:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-diff hljs" data-lang="diff">diff --git a/src/Menu.js b/src/Menu.js
+index fc0c062..727eac2 100644
+--- a/src/Menu.js
++++ b/src/Menu.js
+@@ -1,6 +1,6 @@
+ import React from 'react'
+ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+-import Emoji from './Emoji'
++import events from './events'
+
+ const Menu = _ =&gt;
+   &lt;Navbar bg="dark" variant="dark" expand="md"&gt;
+@@ -9,8 +9,13 @@ const Menu = _ =&gt;
+     &lt;Navbar.Collapse id="basic-navbar-nav"&gt;
+       &lt;Nav className="mr-auto"&gt;
+         &lt;NavDropdown title="Eventos" id="basic-nav-dropdown"&gt;
+-          &lt;NavDropdown.Item href="#evento-20192611"&gt;Corridas de rua premiadas com criptomoedas? Uau! &lt;Emoji symbol="😃"/&gt;&lt;/NavDropdown.Item&gt;
+-          &lt;NavDropdown.Item href="#evento-20191010"&gt;Inteligência Artificial e Blockchain aplicadas a Bem Estar, Saúde e Esportes&lt;/NavDropdown.Item&gt;
++          {
++            events.map((event) =&gt;
++              &lt;NavDropdown.Item key={event.id} href={'#' + event.id}&gt;
++                {event.title}
++              &lt;/NavDropdown.Item&gt;
++            )
++          }
+         &lt;/NavDropdown&gt;
+         &lt;Nav.Link href="#sobre"&gt;Sobre&lt;/Nav.Link&gt;
+       &lt;/Nav&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>3$ git-apply al.diff src/Menu.js</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Anterior: <a href="adicionando-os-atributos-id-e-key.html">Adicionando os atributos id e key</a> | ↑ Acima: <a href="codando-o-componente-events-title.html">Codando o componente Events (title)</a> | ⌂ Início: <a href="index.html">Construindo um website em React</a> | Próximo: <a href="aplicando-css-ao-main.html">Aplicando CSS ao Main</a> →</p>
+</div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics
+-->
+<script async
+src="https://www.googletagmanager.com/gtag/js?id=UA-3106073-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3106073-3');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
+</body>
+</html>

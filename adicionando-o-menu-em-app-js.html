@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="author" content="Paulo Jerônimo">
+<title>Construindo um website em React</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto; border-top: 1px solid #ddddd8;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="adicionando-o-menu-em-app-js" class="book toc2 toc-left">
+<div id="header">
+<h1>Construindo um website em React</h1>
+<div class="details">
+<span id="author" class="author">Paulo Jerônimo</span><br>
+<span id="email" class="email"><a href="mailto:paulojeronimo@gmail.com">paulojeronimo@gmail.com</a></span><br>
+<span id="revdate">2020-04-22 18:24:14 -03</span>
+<br><span id="revremark">Faixa Branca</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Conteúdo</div>
+<p><span class="toc-root"><a href="index.html">Construindo um website em React</a></span></p><ul class="sectlevel0">
+<li><a href="introducao.html">Neste tutorial, você &#8230;&#8203;</a>
+</li>
+<li><a href="licenca-de-uso.html">Licença de uso</a>
+</li>
+<li><a href="preparando-o-ambiente.html">Preparando o ambiente</a>
+</li>
+<li><a href="entendendo-o-que-vamos-criar.html">Entendendo o que vamos criar</a>
+</li>
+<li><a href="criando-o-projeto-inicial.html">Criando o projeto inicial</a>
+</li>
+<li><a href="testando-o-projeto.html">Testando o projeto</a>
+</li>
+<li><a href="testando-o-hot-reload.html">Fazendo uma mudança simples para testar o hot reload do projeto</a>
+</li>
+<li><a href="codando-o-componente-hello.html">Codando o componente "Hello Finisher.Tech!"</a>
+</li>
+<li><a href="adicionando-o-react-bootstrap.html">Adicionando o Bootstrap e o React Bootstrap ao projeto</a>
+</li>
+<li><a href="codando-o-componente-menu.html">Codando o componente Menu</a>
+<ul class="sectlevel1">
+<li><a href="criando-o-componente.html">21. Criando o componente</a>
+</li>
+<li><a href="adicionando-o-menu-em-app-js.html"><span class="toc-current">22. Adicionando o Menu em App.js</span></a>
+</li>
+<li><a href="comitando-3.html">23. Comitando</a>
+</li>
+</ul>
+</li>
+<li><a href="codando-o-componente-header.html">Codando o componente Header</a>
+</li>
+<li><a href="codando-o-componente-events-title.html">Codando o componente Events (title)</a>
+</li>
+<li><a href="codando-o-componente-events-body.html">Codando o componente Events (body)</a>
+</li>
+<li><a href="fixando-a-posicao-do-menu.html">Fixando a posição do Menu</a>
+</li>
+<li><a href="removendo-codigo-nao-utilizado.html">Removendo código não utilizado em App.js</a>
+</li>
+<li><a href="adicionando-o-sobre.html">Adicionando o Sobre</a>
+</li>
+<li><a href="conclusao.html">Conclusão</a>
+</li>
+<li><a href="decisoes.html">Decisões</a>
+</li>
+<li><a href="referencias.html">Referências</a>
+</li>
+<li><a href="manias.html">Manias</a>
+</li>
+<li><a href="proximos-tutoriais.html">Próximos tutoriais</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="adicionando-o-menu-em-app-js">22. Adicionando o Menu em App.js</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><a href="patch/af.diff" class="bare">patch/af.diff</a>:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-diff hljs" data-lang="diff">diff --git a/src/App.js b/src/App.js
+index f2d4206..45f36fa 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,6 +1,10 @@
+-import React from 'react';
+-import './App.css';
++import React from 'react'
++import './App.css'
++import Menu from './Menu'
+
+-const App = _ =&gt; &lt;&gt;Hello Finisher.Tech!&lt;/&gt;
++const App = _ =&gt;
++  &lt;&gt;
++    &lt;Menu/&gt;
++  &lt;/&gt;
+
+-export default App;
++export default App</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>3$ git-apply af.diff src/App.js</pre>
+</div>
+</div>
+<div id="mania-evitar-ponto-e-virgula" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mania: evitar "ponto e vírgula", sempre que possível</div>
+<div class="paragraph">
+<p>Alguns anos atrás, depois de codificar algum tempo em <a href="https://coffeescript.org/" target="_blank" rel="noopener">CoffeeScript</a>,
+passei a não gostar, ainda mais, de usar "ponto e vírgula" em códigos.
+Eu já tinha essa mania desde que comecei a escrever scripts em Bash
+(<em>"a, long, long time ago"</em> 😌)
+Então, você verá que os meus códigos, sempre que possível,
+evitam o uso do "ponto e vírgula".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Após salvar esse código, e ver o reload do React para a aplicação,
+podemos notar o seguinte aviso:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Compiled with warnings.
+
+./src/Menu.js
+  Line 11:6:  Emojis should be wrapped in &lt;span&gt;, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji</pre>
+</div>
+</div>
+<div id="mania-nao-ignorar-avisos" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mania: não ignorar avisos para decidir a hora certa de agir</div>
+<div class="paragraph">
+<p>Eu não gosto de ignorar avisos,
+mesmo os que não me ajudam ou prejudicam em nada, inicialmente.
+Como base num aviso eu tomo a decisão de agir mais cedo, ou mais tarde.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Com base nesse aviso eu resolvi criar outro componente
+(a partir do post <a href="https://medium.com/@seanmcp/%EF%B8%8F-how-to-use-emojis-in-react-d23bbf608bf7">How to use emojis in React</a>):</p>
+</div>
+<div class="paragraph">
+<p>Vamos incluí-lo ao projeto:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="initial/src/Emoji.js" class="bare">initial/src/Emoji.js</a>:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import React from 'react'
+
+const Emoji = props =&gt;
+  &lt;span
+    className="emoji"
+    role="img"
+    aria-label={props.label ? props.label : ""}
+    aria-hidden={props.label ? "false" : "true"}
+  &gt;
+    {props.symbol}
+  &lt;/span&gt;
+
+export default Emoji</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>3$ tut-add src/Emoji.js</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>E alterar o código do <code>Menu</code>, de acordo com o diff a seguir:</p>
+</div>
+<div class="listingblock">
+<div class="title"><a href="patch/ag.diff" class="bare">patch/ag.diff</a>:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-diff hljs" data-lang="diff">diff --git a/src/Menu.js b/src/Menu.js
+index 27e7661..fc0c062 100644
+--- a/src/Menu.js
++++ b/src/Menu.js
+@@ -1,5 +1,6 @@
+ import React from 'react'
+ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
++import Emoji from './Emoji'
+
+ const Menu = _ =&gt;
+   &lt;Navbar bg="dark" variant="dark" expand="md"&gt;
+@@ -8,7 +9,7 @@ const Menu = _ =&gt;
+     &lt;Navbar.Collapse id="basic-navbar-nav"&gt;
+       &lt;Nav className="mr-auto"&gt;
+         &lt;NavDropdown title="Eventos" id="basic-nav-dropdown"&gt;
+-          &lt;NavDropdown.Item href="#evento-20192611"&gt;Corridas de rua premiadas com criptomoedas? Uau! 😃&lt;/NavDropdown.Item&gt;
++          &lt;NavDropdown.Item href="#evento-20192611"&gt;Corridas de rua premiadas com criptomoedas? Uau! &lt;Emoji symbol="😃"/&gt;&lt;/NavDropdown.Item&gt;
+           &lt;NavDropdown.Item href="#evento-20191010"&gt;Inteligência Artificial e Blockchain aplicadas a Bem Estar, Saúde e Esportes&lt;/NavDropdown.Item&gt;
+         &lt;/NavDropdown&gt;
+         &lt;Nav.Link href="#sobre"&gt;Sobre&lt;/Nav.Link&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>3$ git-apply ag.diff src/Menu.js</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Anterior: <a href="criando-o-componente.html">Criando o componente</a> | ↑ Acima: <a href="codando-o-componente-menu.html">Codando o componente Menu</a> | ⌂ Início: <a href="index.html">Construindo um website em React</a> | Próximo: <a href="comitando-3.html">Comitando</a> →</p>
+</div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics
+-->
+<script async
+src="https://www.googletagmanager.com/gtag/js?id=UA-3106073-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3106073-3');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
+</body>
+</html>

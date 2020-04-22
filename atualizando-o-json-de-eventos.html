@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="author" content="Paulo Jerônimo">
+<title>Construindo um website em React</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto; border-top: 1px solid #ddddd8;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="atualizando-o-json-de-eventos" class="book toc2 toc-left">
+<div id="header">
+<h1>Construindo um website em React</h1>
+<div class="details">
+<span id="author" class="author">Paulo Jerônimo</span><br>
+<span id="email" class="email"><a href="mailto:paulojeronimo@gmail.com">paulojeronimo@gmail.com</a></span><br>
+<span id="revdate">2020-04-22 18:24:14 -03</span>
+<br><span id="revremark">Faixa Branca</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Conteúdo</div>
+<p><span class="toc-root"><a href="index.html">Construindo um website em React</a></span></p><ul class="sectlevel0">
+<li><a href="introducao.html">Neste tutorial, você &#8230;&#8203;</a>
+</li>
+<li><a href="licenca-de-uso.html">Licença de uso</a>
+</li>
+<li><a href="preparando-o-ambiente.html">Preparando o ambiente</a>
+</li>
+<li><a href="entendendo-o-que-vamos-criar.html">Entendendo o que vamos criar</a>
+</li>
+<li><a href="criando-o-projeto-inicial.html">Criando o projeto inicial</a>
+</li>
+<li><a href="testando-o-projeto.html">Testando o projeto</a>
+</li>
+<li><a href="testando-o-hot-reload.html">Fazendo uma mudança simples para testar o hot reload do projeto</a>
+</li>
+<li><a href="codando-o-componente-hello.html">Codando o componente "Hello Finisher.Tech!"</a>
+</li>
+<li><a href="adicionando-o-react-bootstrap.html">Adicionando o Bootstrap e o React Bootstrap ao projeto</a>
+</li>
+<li><a href="codando-o-componente-menu.html">Codando o componente Menu</a>
+</li>
+<li><a href="codando-o-componente-header.html">Codando o componente Header</a>
+</li>
+<li><a href="codando-o-componente-events-title.html">Codando o componente Events (title)</a>
+</li>
+<li><a href="codando-o-componente-events-body.html">Codando o componente Events (body)</a>
+<ul class="sectlevel1">
+<li><a href="atualizando-o-json-de-eventos.html"><span class="toc-current">36. Atualizando o JSON de eventos</span></a>
+<ul class="sectlevel2">
+<li><a href="como-o-json-foi-atualizado-passo-opcional.html">36.1. Como o JSON foi atualizado? (passo opcional)</a>
+</li>
+</ul>
+</li>
+<li><a href="inserindo-o-corpo-dos-eventos.html">37. Inserindo o corpo dos eventos</a>
+</li>
+<li><a href="comitando-6.html">38. Comitando</a>
+</li>
+</ul>
+</li>
+<li><a href="fixando-a-posicao-do-menu.html">Fixando a posição do Menu</a>
+</li>
+<li><a href="removendo-codigo-nao-utilizado.html">Removendo código não utilizado em App.js</a>
+</li>
+<li><a href="adicionando-o-sobre.html">Adicionando o Sobre</a>
+</li>
+<li><a href="conclusao.html">Conclusão</a>
+</li>
+<li><a href="decisoes.html">Decisões</a>
+</li>
+<li><a href="referencias.html">Referências</a>
+</li>
+<li><a href="manias.html">Manias</a>
+</li>
+<li><a href="proximos-tutoriais.html">Próximos tutoriais</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="atualizando-o-json-de-eventos">36. Atualizando o JSON de eventos</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><a href="patch/an.diff" class="bare">patch/an.diff</a>:</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-diff hljs" data-lang="diff">diff --git a/src/events.json b/src/events.json
+index d78b114..9f33bea 100644
+--- a/src/events.json
++++ b/src/events.json
+@@ -4,13 +4,13 @@
+     "title": "Corridas de rua premiadas com criptomoedas? Uau! 😃",
+     "subtitle": "Inscreva-se! Evento em 26/Nov/2019 às 19:30",
+     "link": "http://j.mp/ft26nov",
+-    "body": "Será que ..."
++    "body": " &lt;p&gt;\n  &lt;strong&gt;\n   Será que:\n  &lt;/strong&gt;\n &lt;/p&gt;\n &lt;ol&gt;\n  &lt;li&gt;\n   Só os\n   &lt;strong&gt;\n    atletas profissionais\n   &lt;/strong&gt;\n   , que buscam o pódio, merecem ganhar prêmios em dinheiro?\n  &lt;/li&gt;\n  &lt;li&gt;\n   A disciplina diária de\n   &lt;strong&gt;\n    corredores amadores\n   &lt;/strong&gt;\n   também poderia ser (financeiramente) recompensada?\n  &lt;/li&gt;\n  &lt;li&gt;\n   Há maneiras de tornar as corridas de rua ainda mais valiosas (além de proporcionar saúde, objetos e lembranças)?\n  &lt;/li&gt;\n &lt;/ol&gt;\n &lt;p&gt;\n  &lt;strong&gt;\n   Criptomoedas\n  &lt;/strong&gt;\n  e\n  &lt;strong&gt;\n   Blockchain\n  &lt;/strong&gt;\n  são conceitos atuais que estão mudando, radicalmente,\n            a forma como os negócios existentes são feitos.\n            Novos produtos, modelos de trabalho e serviços estão sendo criados.\n &lt;/p&gt;\n &lt;p&gt;\n  &lt;strong&gt;\n   Será que as Criptomoedas e a Blockchain também afetarão as corridas de rua\n  &lt;/strong&gt;\n  ,\n              um negócio lucrativo para apenas alguns?\n &lt;/p&gt;\n &lt;p&gt;\n  Nesse evento, a Finisher.Tech discutirá como vem desenvolvendo uma solução inovadora,\n            que faz uso da Blockchain pública do\n  &lt;strong&gt;\n   Ethereum\n  &lt;/strong&gt;\n  e que afetará o\n  &lt;strong&gt;\n   mercado das corridas de rua\n  &lt;/strong&gt;\n  .\n &lt;/p&gt;\n"
+   },
+   {
+     "id": "evento-20191010",
+     "title": "Inteligência Artificial e Blockchain aplicadas a Bem Estar, Saúde e Esportes",
+     "subtitle": "Evento finalizado em 10/Out/2019",
+     "link": "http://j.mp/ft10out",
+-    "body": "Inteligência Artificial e Blockchain são dois grandes pilares ..."
++    "body": " &lt;p&gt;\n  &lt;strong&gt;\n   Inteligência Artificial\n  &lt;/strong&gt;\n  e\n  &lt;strong&gt;\n   Blockchain\n  &lt;/strong&gt;\n  são\n  &lt;strong&gt;\n   dois grandes pilares\n  &lt;/strong&gt;\n  que estão movendo a evolução dos sistemas\n  &lt;strong&gt;\n   HOJE\n  &lt;/strong&gt;\n  .\n &lt;/p&gt;\n &lt;p&gt;\n  A\n  &lt;strong&gt;\n   Inteligênca Artificial\n  &lt;/strong&gt;\n  é a base para sistemas especialistas que, com base no conhecimento de eventos anteriores,\n  &lt;strong&gt;\n   procura emular a especialização humana para prever e/ou sugerir novas realidades\n  &lt;/strong&gt;\n  .\n &lt;/p&gt;\n &lt;p&gt;\n  A\n  &lt;strong&gt;\n   Blockchain\n  &lt;/strong&gt;\n  foi criada, inicialmente, para uma evolução do sistema financeiro.\n            Hoje ela\n  &lt;strong&gt;\n   é a base tecnológica para o funcionamento das criptomoedas\n  &lt;/strong&gt;\n  .\n            Contudo, ela\n  &lt;strong&gt;\n   não impulsiona apenas esse setor\n  &lt;/strong&gt;\n  .\n            Sistemas poderosos, robustos e imparáveis podem ser criados através dessa tecnologia que\n  &lt;strong&gt;\n   fornece transações seguras\n  &lt;/strong&gt;\n  e o\n  &lt;strong&gt;\n   processamento descentralizado de contratos inteligentes\n  &lt;/strong&gt;\n  .\n &lt;/p&gt;\n &lt;p&gt;\n  &lt;strong&gt;\n   Como essas\n  &lt;/strong&gt;\n  duas\n  &lt;strong&gt;\n   tecnologias aliadas podem ser aplicadas\n  &lt;/strong&gt;\n  a área de Bem Estar, Saúde e Esportes?\n &lt;/p&gt;\n &lt;p&gt;\n  &lt;strong&gt;\n   Se você é uma pessoa em busca de orientação para iniciar um novo plano de saúde e bem estar\n  &lt;/strong&gt;\n  , ou se está pretendendo começar a prática de algum esporte, iremos lhe responder:\n &lt;/p&gt;\n &lt;ol&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    &lt;strong&gt;\n     Que soluções atuais\n    &lt;/strong&gt;\n    existem e que\n    &lt;strong&gt;\n     você já pode utilizar para iniciar seu plano\n    &lt;/strong&gt;\n    ?\n   &lt;/p&gt;\n  &lt;/li&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    &lt;strong&gt;\n     Como a Inteligência Artificial e a Blockchain podem ser aplicadas\n    &lt;/strong&gt;\n    para lhe ajudar em seus planos e metas, e na sua evolução e acompanhamento?\n   &lt;/p&gt;\n  &lt;/li&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    &lt;strong&gt;\n     Que motivações a mais\n    &lt;/strong&gt;\n    para a prática esportiva\n    &lt;strong&gt;\n     você obtem\n    &lt;/strong&gt;\n    utilizando tais tecnologias?\n   &lt;/p&gt;\n  &lt;/li&gt;\n &lt;/ol&gt;\n &lt;p&gt;\n  Se você é\n  &lt;strong&gt;\n   um\n   &lt;em&gt;\n    personal trainer\n   &lt;/em&gt;\n   , um professor de educação física, uma academia, um nutricionista, um médico, uma loja de alimentos saudáveis (incluindo ou não suplementos), um organizador de eventos esportivos, um dono de campos de futebol\n  &lt;/strong&gt;\n  , etc, lhe daremos as seguintes respostas:\n &lt;/p&gt;\n &lt;ol class=\"arabic\"&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    &lt;strong&gt;\n     Por que\n    &lt;/strong&gt;\n    você deve\n    &lt;strong&gt;\n     utilizar sistemas que são implementados com essas novas tecnologias\n    &lt;/strong&gt;\n    ?\n   &lt;/p&gt;\n  &lt;/li&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    Elas são\n    &lt;strong&gt;\n     aliadas\n    &lt;/strong&gt;\n    ?\n    &lt;strong&gt;\n     Diminuirão o seu trabalho\n    &lt;/strong&gt;\n    ?\n    &lt;strong&gt;\n     Tomarão o seu lugar\n    &lt;/strong&gt;\n    ?\n   &lt;/p&gt;\n  &lt;/li&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    Como elas\n    &lt;strong&gt;\n     podem ser utilizadas na descoberta e na fidelização de novos clientes\n    &lt;/strong&gt;\n    ?\n   &lt;/p&gt;\n  &lt;/li&gt;\n  &lt;li&gt;\n   &lt;p&gt;\n    Como seus\n    &lt;strong&gt;\n     clientes atuais podem utilizá-las contando, ainda, com a sua ajuda\n    &lt;/strong&gt;\n    ?\n   &lt;/p&gt;\n  &lt;/li&gt;\n &lt;/ol&gt;\n"
+   }
+ ]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>3$ git-apply an.diff src/events.json</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="como-o-json-foi-atualizado-passo-opcional.html">Como o JSON foi atualizado? (passo opcional)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>↑ Acima: <a href="codando-o-componente-events-body.html">Codando o componente Events (body)</a> | ⌂ Início: <a href="index.html">Construindo um website em React</a> | Próximo: <a href="como-o-json-foi-atualizado-passo-opcional.html">Como o JSON foi atualizado? (passo opcional)</a> →</p>
+</div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics
+-->
+<script async
+src="https://www.googletagmanager.com/gtag/js?id=UA-3106073-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3106073-3');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
+</body>
+</html>
